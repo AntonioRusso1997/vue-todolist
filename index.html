@@ -15,16 +15,16 @@
         </div>
 
         <div class="add-todo">            
-            <input placeholder="Nuovo Todo" type="text">
-            <button>Aggiungi</button>
+            <input @keyUp.enter="addToDo" v-model="newToDo" placeholder="Nuovo Todo" type="text">
+            <button @click="addToDo">Aggiungi</button>
         </div>
 
         <div class="list">
-            <ul>
-                <li>Prova</li>
+            <ul v-if="toDos.length > 0">
+                <li v-for="(toDo, index) in toDos">{{ toDo }} <i @click="removeToDo(index)" class="fas fa-times"></i></li>
             </ul>
 
-            <h2>Non ci sono Todo.</h2>
+            <h2 v-else>Non ci sono Todo.</h2>
         </div>
     </div>
 
