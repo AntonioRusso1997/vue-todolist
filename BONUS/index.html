@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
-    <title>Vue To Do List</title>
+    <title>Vue To Do List Bonus</title>
 </head>
 <body>
     <div id="root" class="container">
@@ -21,10 +21,16 @@
 
         <div class="list">
             <ul v-if="toDos.length > 0">
-                <li v-for="(toDo, index) in toDos">{{ toDo }} <i @click="removeToDo(index)" class="fas fa-times"></i></li>
+                <li v-for="(toDo, index) in toDos">
+                    <span @click="check(index)"><i :class="toDo.done == true ? colorClass : colorClassTwo" class="fas fa-circle"></i> {{ toDo.title }}</span>
+                    <i @click="removeToDo(index)" class="fas fa-trash-alt remove"></i>
+                </li>
             </ul>
 
-            <h2 v-else>Non ci sono Todo.</h2>
+            <h2 v-else><i class="fas fa-clipboard-check"></i>
+                Non ci sono ToDo. 
+                <i class="fas fa-clipboard-check"></i>
+            </h2>
         </div>
     </div>
 
